@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import ProductCard from "../components/ProductCard";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -41,83 +42,33 @@ return (
   <>
     <Navbar />
 
-    <div className="min-h-screen bg-gray-100 p-5">
-      
-      {/* Header */}
-      <div className="flex justify-between items-center mb-5">
-        <h1 className="text-2xl font-bold">
-          Product List
-        </h1>
 
-        <button
-          onClick={() => navigate("/add-product")}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          + Add Product
-        </button>
-      </div>
+<div className="min-h-screen bg-gray-100 p-5">
 
-        
+  <div className="flex justify-between items-center mb-5">
+    <h1 className="text-2xl font-bold">
+      Product List
+    </h1>
 
+    <button
+      onClick={() => navigate("/add-product")}
+      className="bg-blue-500 text-white px-4 py-2 rounded"
+    >
+      + Add Product
+    </button>
+  </div>
 
-      {/* Products */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {products.map((p) => (
-          <div
-            key={p._id}
-            className="bg-white p-4 rounded shadow"
-          >
-            <img
-              src={p.image}
-              alt={p.name}
-              className="h-40 w-full object-cover"
-            />
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {products.map((p) => (
+      <ProductCard
+        key={p._id}
+        product={p}
+        onDelete={handleDelete}
+      />
+    ))}
+  </div>
 
-            <h2 className="text-lg font-bold mt-2">
-              {p.name}
-            </h2>
-
-            <p className="text-gray-600">
-              ₹ {p.price}
-            </p>
-
-            <p className="text-sm text-gray-500">
-              {p.description}
-            </p>
-
-            {/* <button
-              onClick={() =>
-                navigate(`/product/${p._id}`)
-              }
-              className="mt-2 bg-green-500 text-white px-3 py-1 rounded"
-            >
-              View Details
-            </button> */}
-            <button
-  onClick={() => navigate(`/product/${p._id}`)}
-  className="bg-green-500 text-white px-3 py-1 rounded"
->
-  View Details
-</button>
-        
-        <button
-            onClick={() => navigate(`/edit-product/${p._id}`)}
-            className="mt-2 bg-yellow-500 text-white px-3 py-1 rounded ml-2"
-        >
-        Edit
-        </button>
-        <button
-            onClick={() => handleDelete(p._id)}
-            className="mt-2 bg-red-500 text-white px-3 py-1 rounded ml-2"
-        >
-        Delete
-        </button>
-
-        </div>
-        ))}
-      </div>
-        </div>
-      
+</div>
     </>
   );
   

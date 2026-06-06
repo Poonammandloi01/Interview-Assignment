@@ -28,7 +28,9 @@ function App() {
             <ProductDetails />
           </ProtectedRoute>} />
         <Route path="/add-product" element={
-          <AddProduct />} />
+          <ProtectedRoute>
+            <AddProduct />
+          </ProtectedRoute>} />
         <Route path="/edit-product/:id" element={
           <ProtectedRoute>
             <EditProduct />

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
-
+  const [search, setSearch] = useState("");
   const fetchProducts = async () => {
     try {
       const { data } = await API.get("/products");
@@ -36,8 +37,10 @@ function Home() {
   useEffect(() => {
     fetchProducts();
   }, []);
+return (
+  <>
+    <Navbar />
 
-  return (
     <div className="min-h-screen bg-gray-100 p-5">
       
       {/* Header */}
@@ -113,8 +116,11 @@ function Home() {
         </div>
         ))}
       </div>
-    </div>
+        </div>
+      
+    </>
   );
+  
 }
 
 export default Home;

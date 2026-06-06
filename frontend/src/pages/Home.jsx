@@ -82,14 +82,20 @@ function Home() {
               {p.description}
             </p>
 
-            <button
+            {/* <button
               onClick={() =>
                 navigate(`/product/${p._id}`)
               }
               className="mt-2 bg-green-500 text-white px-3 py-1 rounded"
             >
               View Details
-            </button>
+            </button> */}
+            <button
+  onClick={() => navigate(`/product/${p._id}`)}
+  className="bg-green-500 text-white px-3 py-1 rounded"
+>
+  View Details
+</button>
         
         <button
             onClick={() => navigate(`/edit-product/${p._id}`)}

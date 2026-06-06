@@ -1,6 +1,12 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import {
+  signup,
+  login,
+  getProfile,
+  updateProfile
+} from "../controllers/authController.js";
 
 export const signup = async (req, res) => {
   try {
@@ -92,4 +98,46 @@ export const login = async (req, res) => {
       message: error.message
     });
   }
+  export const getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .select("-password");
+
+    res.status(200).json(user);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+
+    const {
+      fullName,
+      phone
+    } = req.body;
+
+    const user =
+      await User.findByIdAndUpdate(
+        req.user.id,
+        {
+          fullName,
+          phone
+        },
+        {
+          returnDocument: "after"
+        }
+      ).select("-password");
+
+    res.status(200).json(user);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
 };

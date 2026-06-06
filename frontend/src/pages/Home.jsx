@@ -38,6 +38,13 @@ function Home() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const filteredProducts = products.filter(
+  (product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()) ||
+    product.category.toLowerCase().includes(search.toLowerCase())
+);
+
 return (
   <>
     <Navbar />
@@ -49,7 +56,15 @@ return (
     <h1 className="text-2xl font-bold">
       Product List
     </h1>
-
+  <div className="mb-5">
+  <input
+    type="text"
+    placeholder="Search products..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="w-full md:w-96 border border-gray-300 p-2 rounded"
+  />
+</div>
     <button
       onClick={() => navigate("/add-product")}
       className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -59,7 +74,8 @@ return (
   </div>
 
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {products.map((p) => (
+    {
+    filteredProducts.map((p) => (
       <ProductCard
         key={p._id}
         product={p}

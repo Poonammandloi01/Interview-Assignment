@@ -1,16 +1,70 @@
-# React + Vite
+# Product Management App (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hey 👋  
+This is a simple yet powerful Product Management web app built using React + Vite.
 
-Currently, two official plugins are available:
+It allows users to create accounts, login securely, and manage products easily with a clean UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Live App
+👉 https://interview-assignment-rho-six.vercel.app/?_vercel_share=9eXMRxsrcrY4HBwVeKkDbw3A1fBVnv7a
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## What this project does
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Basically, this app helps you:
+
+- Create a new account (Signup)
+- Login securely using JWT authentication
+- View all products in a nice UI
+- Add new products
+- Edit existing products
+- Delete products (with confirmation)
+- View product details
+- Update your profile
+
+---
+
+## Tech Stack
+
+- React.js (Frontend)
+- Vite (Build tool)
+- React Router DOM (Routing)
+- Axios (API calls)
+- Tailwind CSS (Styling)
+- JWT (Authentication)
+
+---
+
+##  Authentication Flow
+
+- When you login, backend sends a JWT token
+- That token is saved in localStorage
+- Every API request automatically sends the token
+- If token is missing → user is redirected to login page
+
+---
+
+
+---
+
+## How to run locally
+
+Just follow these simple steps:
+
+###  Install dependencies
+
+npm install
+
+npm run dev
+
+http://localhost:5173
+
+Create a .env file:
+VITE_API_URL=http://localhost:5000/api
+
+For production:
+VITE_API_URL=https://your-backend.onrender.com/api
+

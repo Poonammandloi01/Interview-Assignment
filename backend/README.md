@@ -1,31 +1,37 @@
 # Product Management Backend API
 
-This is the backend service for the Product Management application built using the MERN stack. It provides authentication, product management, and profile management APIs.
+This is the backend service for a **Product Management System** built using the MERN stack.
 
-## Features
+It handles authentication, product management, and user profile features using secure JWT-based authorization.
 
-* User Registration
-* User Login
-* JWT Authentication
-* Password Hashing using bcrypt
-* Product CRUD Operations
-* User Profile View and Update
-* MongoDB Database Integration
-* Protected Routes using JWT Middleware
+---
+
+##  Features
+
+-  User Registration (Signup)
+-  User Login (JWT Authentication)
+-  Password hashing using bcrypt
+-  Full Product CRUD operations
+-  User Profile (View & Update)
+-  Protected Routes using JWT middleware
+-  MongoDB database integration
+
+---
 
 ## Tech Stack
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT (JSON Web Token)
-* bcryptjs
-* dotenv
-* cors
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT (Authentication)
+- bcryptjs (Password hashing)
+- dotenv (Environment variables)
+- cors (Cross-origin support)
+
+---
 
 ## Project Structure
-
 backend/
 ├── config/
 ├── controllers/
@@ -36,92 +42,63 @@ backend/
 ├── server.js
 └── package.json
 
-## Installation
 
-1. Clone the repository
+---
 
-git clone <repository-url>
+##  Installation & Setup
 
-2. Navigate to backend folder
+### Clone the repository
 
+git clone repo
+
+Move into backend folder
 cd backend
 
-3. Install dependencies
+Install dependencies
+npm i
 
-npm install
-
-4. Create a .env file
-
+Create .env file
 PORT=5000
-
 MONGO_URI=your_mongodb_connection_string
-
 JWT_SECRET=your_secret_key
 
-5. Start the server
-
+Start the server
 npm run dev
 
-Server will run on:
 
 http://localhost:5000
 
-## API Endpoints
 
-### Authentication
 
-POST /api/auth/signup
+* API Endpoints
+Authentication
+POST /api/auth/signup → Register new user
+POST /api/auth/login → Login user & get JWT token
 
-Register a new user.
+Products
+GET /api/products → Get all products
+GET /api/products/:id → Get single product
+POST /api/products → Create product (Protected)
+PUT /api/products/:id → Update product (Protected)
+DELETE /api/products/:id → Delete product (Protected)   
 
-POST /api/auth/login
+User Profile
+GET /api/users/profile → Get user profile (Protected)
+PUT /api/users/profile → Update user profile (Protected)
 
-Login user and receive JWT token.
+Authentication Flow
+User logs in using email & password
+Server generates JWT token
+Token is sent to frontend
+Frontend stores token in localStorage
+Every request sends token in headers:
+Authorization: Bearer <token>
 
-### Products
 
-GET /api/products
-
-Get all products.
-
-GET /api/products/:id
-
-Get a single product by ID.
-
-POST /api/products
-
-Create a new product (Protected Route).
-
-PUT /api/products/:id
-
-Update a product (Protected Route).
-
-DELETE /api/products/:id
-
-Delete a product (Protected Route).
-
-### User Profile
-
-GET /api/users/profile
-
-Get logged-in user profile (Protected Route).
-
-PUT /api/users/profile
-
-Update logged-in user profile (Protected Route).
-
-## Authentication
-
-Protected routes require a JWT token in the request header.
-
-Authorization: Bearer <your_token>
-
-## Database
-
-MongoDB is used as the primary database. The application is connected using Mongoose.
-
-## Author
-
-Poonam Mandloi
-
-Built as part of a MERN Stack Developer technical assignment to demonstrate backend development, authentication, database integration, and REST API design.
+Database
+MongoDB Atlas is used as database
+Mongoose handles schema & connection
+Deployment
+Backend: Render
+Database: MongoDB Atlas
+Frontend: Vercel

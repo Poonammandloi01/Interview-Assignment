@@ -109,24 +109,27 @@ function AddProduct() {
           {/* Price & Stock Row */}
           <div className="grid grid-cols-2 gap-4">
             {/* Price */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                Price ($)
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-slate-500 font-medium text-sm">$</span>
-                </div>
-                <input
-                  name="price"
-                  type="number"
-                  placeholder="99.99"
-                  onChange={handleChange}
-                  className="w-full bg-[#0B0F19]/60 border border-slate-700/80 rounded-xl pl-8 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition duration-200 text-sm"
-                  required
-                />
-              </div>
-            </div>
+          {/* Price */}  
+<div className="space-y-1.5">
+  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+    Price (₹)
+  </label>
+
+  <div className="relative">
+    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+      <span className="text-slate-500 font-medium text-sm">₹</span>
+    </div>
+
+    <input
+      name="price"
+      type="number"
+      placeholder="999.99"
+      onChange={handleChange}
+      className="w-full bg-[#0B0F19]/60 border border-slate-700/80 rounded-xl pl-8 pr-4 py-3 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition duration-200 text-sm"
+      required
+    />
+  </div>
+</div>
 
             {/* Stock */}
             <div className="space-y-1.5">
